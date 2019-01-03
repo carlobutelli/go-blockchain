@@ -10,17 +10,17 @@ import (
 func main() {
 	chain := blockchain.InitBlockChain()
 
-	chain.AddBlock("Beta Block")
-	chain.AddBlock("Gamma Block")
-	chain.AddBlock("Omega Block")
+	chain.AddNewBlock("Beta secuirty info")
+	chain.AddNewBlock("Gamma transaction")
+	chain.AddNewBlock("Omega detailed payment")
 
 	for _, block := range chain.Blocks {
 		fmt.Printf("Previous hash: %x\n", block.PrevHash)
-		fmt.Printf("Data in block: %s\n", block.Data)
-		fmt.Printf("Hash: %x\n", block.Hash)
+		fmt.Printf("Block's Data:  %s\n", block.Data)
+		fmt.Printf("Current Hash:  %x\n", block.Hash)
 
-		pow := blockchain.NewProof(block)
-		fmt.Printf("PoW: %s\n", strconv.FormatBool(pow.Validate()))
+		pow := blockchain.Proof(block)
+		fmt.Printf("Proof of Work: %s\n", strconv.FormatBool(pow.Validate()))
 		fmt.Println()
 	}
 }

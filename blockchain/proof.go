@@ -17,8 +17,8 @@ type ProofOfWork struct {
 	Target *big.Int
 }
 
-// Grab data from the block
-func NewProof(b *Block) *ProofOfWork {
+// Grab data from the block and shift 0s reqired bytes to left
+func Proof(b *Block) *ProofOfWork {
 	target := big.NewInt(1)
 	target.Lsh(target, uint(512-Difficulty)) // shift left
 	pow := &ProofOfWork{b, target}
