@@ -1,10 +1,5 @@
 package blockchain
 
-/*
-Every block inside the blockchain references the previous block that was created inside the BC.
-We derive the hash inside of our block from the data inside of the block and the previous hash
-that has been passed to the block.
-*/
 type Block struct {
 	Hash     []byte // Hash of this block
 	Data     []byte // data contained in this block

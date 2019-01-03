@@ -10,10 +10,7 @@ import (
 	"math/big"
 )
 
-// Proof of work algorithm. Secure the blockchain by forcing the network to do work to add a block to
-// the chain. Computational power.
-
-const Difficulty = 12
+const Difficulty = 18
 
 type ProofOfWork struct {
 	Block  *Block
