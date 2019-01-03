@@ -1,4 +1,4 @@
-package main
+package functions
 
 // Gets pointer for blockchain
 func (chain *BlockChain) AddBlock(data string) {
