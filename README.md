@@ -7,5 +7,8 @@ Validation of the proof, when a user does the work to sign a block, a proof of t
 
 Requirements to meet the hash => first few bytes must contain 0s.
 
-### Run `go run main.go` to run the app 
-### Run `go build main.go` to build an executable file.
+### Run the app
+> ```$ go run main.go``` 
+
+### Build an executable file
+> ```$ go build main.go``` 
