@@ -10,9 +10,8 @@ import (
 	"math/big"
 )
 
-/* Proof of work algorithm. Secure the blockchain by forcing the network to do work to add a block to
-   the chain. Computational power.
-*/
+// Proof of work algorithm. Secure the blockchain by forcing the network to do work to add a block to
+// the chain. Computational power.
 
 const Difficulty = 12
 
@@ -75,9 +74,7 @@ func (pow *ProofOfWork) RunProof() (int, []byte) {
 	return nonce, hash[:]
 }
 
-// Check if hash meets requirements:
-// firsts bytes must contains 0s
-
+// Validate the hash
 func (pow *ProofOfWork) Validate() bool {
 	var intHash big.Int
 	data := pow.InitData(pow.Block.Nonce)
