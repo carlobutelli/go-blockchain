@@ -1,10 +1,5 @@
 package blockchain
 
-import (
-	"bytes"
-	"crypto/sha512"
-)
-
 /*
 Every block inside the blockchain references the previous block that was created inside the BC.
 We derive the hash inside of our block from the data inside of the block and the previous hash
@@ -14,6 +9,7 @@ type Block struct {
 	Hash     []byte // Hash of this block
 	Data     []byte // data contained in this block
 	PrevHash []byte // Last block hash, needed to link the new block has to the chain
+	Nonce    int
 }
 
 type BlockChain struct {
@@ -21,17 +17,20 @@ type BlockChain struct {
 }
 
 // Create the hash based on the previous hash and the data
-func (b *Block) DeriveHash() {
+/*func (b *Block) DeriveHash() {
 	info := bytes.Join([][]byte{b.Data, b.PrevHash}, []byte{})
 	hash := sha512.Sum512(info)
 	// Push the created hash into the block field
 	b.Hash = hash[:]
-}
+}*/
 
 // Takes data and the previous hash from the last block and returns a pointer to a block
 func CreateBlock(data string, prevHash []byte) *Block {
-	block := &Block{[]byte{}, []byte(data), prevHash}
-	block.DeriveHash()
+	block := &Block{[]byte{}, []byte(data), prevHash, 0}
+	pow := NewProof(block)
+	nonce, hash := pow.RunProof()
+	block.Hash = hash[:]
+	block.Nonce = nonce
 	return block
 }
 
