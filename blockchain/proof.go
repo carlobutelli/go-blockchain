@@ -5,9 +5,10 @@ import (
 	"crypto/sha512"
 	"encoding/binary"
 	"fmt"
-	"log"
 	"math"
 	"math/big"
+
+	"github.com/carlitos26/go-blockchain/errors"
 )
 
 const Difficulty = 18
@@ -42,9 +43,7 @@ func (pow *ProofOfWork) InitData(nonce int) []byte {
 func ToHex(num int64) []byte {
 	buff := new(bytes.Buffer)
 	err := binary.Write(buff, binary.BigEndian, num)
-	if err != nil {
-		log.Panic(err)
-	}
+	errors.Handle(err)
 	return buff.Bytes()
 }
 
