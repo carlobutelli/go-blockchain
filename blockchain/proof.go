@@ -55,12 +55,12 @@ func ToHex(num int64) []byte {
 // Create hash for data and counter
 func (pow *ProofOfWork) RunProof() (int, []byte) {
 	var intHash big.Int
-	var hash [32]byte
+	var hash [64]byte
 
 	nonce := 0
 	for nonce < math.MaxInt64 {
 		data := pow.InitData(nonce)
-		hash := sha512.Sum512(data)
+		hash = sha512.Sum512(data)
 
 		fmt.Printf("\r%x", hash)
 
