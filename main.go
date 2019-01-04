@@ -89,6 +89,7 @@ func (cl *CommandLine) run() {
 func main() {
 	defer os.Exit(0)
 	chain := blockchain.InitBlockChain()
+	// Close the db and give time to the garbage to collect kyes and values
 	defer chain.Database.Close()
 
 	cl := CommandLine{chain}
