@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	dbPath = "./tmp/blocks"
+	dbPath = "./data/blocks"
 )
 
 // Represent the chain of blocks
