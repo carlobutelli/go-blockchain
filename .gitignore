@@ -15,3 +15,6 @@
 *.vlog
 *.sst
 MANIFEST
+
+# IDEs
+.idea
